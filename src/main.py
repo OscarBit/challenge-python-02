@@ -1,12 +1,23 @@
 # Resolve the problem!!
 import string
+import random
+from math import floor
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
-
+LOWER_LETTERS = list(string.ascii_lowercase)
+UPPER_LETTERS = list(string.ascii_lowercase.upper())
+NUMBERS = list('01234 56789')
 
 def generate_password():
-    # Start coding here
-
+    length = random.choice(range(8,17))
+    n = floor(length/4)
+    one = random.choices(LOWER_LETTERS, k=n)
+    two = random.choices(NUMBERS, k=n)
+    three = random.choices(SYMBOLS, k=n)
+    four = random.choices(UPPER_LETTERS, k=n)
+    password = "".join(one+two+four+three)
+    print(one + two + four + three, password)
+    return password
 
 def validate(password):
 
